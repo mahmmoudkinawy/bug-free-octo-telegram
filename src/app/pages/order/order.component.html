@@ -27,6 +27,39 @@
     </tbody>
   </table>
 
+  <h2>Get Rate</h2>
+<div class="rate" *ngIf="rateForm">
+  <form [formGroup]="rateForm" (ngSubmit)="getRate()" class="rate-form">
+    <div class="form-group">
+      <label>Weight:</label>
+      <input type="number" formControlName="Dcountry" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label>Dimension:</label>
+      <input type="text" formControlName="Rcountry" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label>Category:</label>
+      <input type="text" formControlName="weight" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label>Npackge:</label>
+      <input type="text" formControlName="Npackge" class="form-control" />
+    </div>
+
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+
+    <button type="submit" class="btn btn-primary">Get Rate</button>
+  </form>
+</div>
+  <!-- <div *ngIf="rateData" class="rate-result">
+    <h3>Rate Result:</h3>
+    <pre>{{ rateData.form }}</pre>
+  </div> -->
+
+
   <div class="all" *ngIf="orderForm">
     <form [formGroup]="orderForm" (ngSubmit)="submitOrder()" class="order-form">
       <!-- Sender Information -->

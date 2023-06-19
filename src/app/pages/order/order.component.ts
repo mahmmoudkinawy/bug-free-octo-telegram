@@ -11,6 +11,9 @@ import { OrderService } from 'src/app/services/order.service';
 
 export class OrderComponent implements OnInit {
   orders: Order[] = [];
+  rateForm: FormGroup | null = null;
+  rateData: any;
+
 order: Order = {
   _id:'',
   senderName: '',
@@ -55,6 +58,13 @@ ngOnInit() {
     notes: ['ggggggggg', Validators.required],
     paymentId: ['3456787654', Validators.required],
     deliverTime: ['day', Validators.required]
+  });
+
+  this.rateForm = this.formBuilder.group({
+    Dcountry: ['', Validators.required],
+    Rcountry: ['', Validators.required],
+    weight: ['', Validators.required],
+    Npackge:['',Validators.required]
   });
 
   this.getOrders();
@@ -110,5 +120,31 @@ updateOrder(orderId: string) {
   );
 }
 
+getRate() {
+  if (this.rateForm?.valid) {
+    const data = {
+      Dcountry: this.rateForm.value.Dcountry,
+      Rcountry: this.rateForm.value.Rcountry,
+      weight: this.rateForm.value.weight,
+      Npackge: this.rateForm.value.Npackge
+    };
+
+    this.orderService.getRate(data).subscribe(
+      (rateResponse: any) => {
+        this.rateData = rateResponse;
+        console.log(this.rateData)
+        this.errorMessage = '';
+      },
+      (error) => {
+        console.error('Error getting rate:', error);
+        this.errorMessage = 'Error getting rate. Please try again.';
+        this.rateData = null;
+      }
+    );
+  } else {
+    this.errorMessage = 'Please fill in all the required fields.';
+  }
 }
+}
+
 
