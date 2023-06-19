@@ -1,0 +1,120 @@
+<div class="container">
+    <div class="row">
+        <form #registerForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-6 offset-md-3">
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" class="form-control" id="firstName" [(ngModel)]="userForRegister.firstName"
+                    name="firstName" required #firstName="ngModel" />
+                <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="text-danger">
+                    <div *ngIf="firstName.hasError('required')">
+                        First Name is required.
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" class="form-control" id="lastName" [(ngModel)]="userForRegister.lastName"
+                    name="lastName" required #lastName="ngModel" />
+                <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="text-danger">
+                    <div *ngIf="lastName.hasError('required')">
+                        Last Name is required.
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="text" class="form-control" id="phone" [(ngModel)]="userForRegister.phone" name="phone"
+                    pattern="^(00201|\+201|01)[0-2,5]{1}[0-9]{8}$" required #phone="ngModel" />
+                <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="text-danger">
+                    <div *ngIf="phone.hasError('required')">
+                        Phone Number is required.
+                    </div>
+                    <div *ngIf="phone.hasError('pattern')">
+                        Phone Number is not well formated.
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" class="form-control" id="address" [(ngModel)]="userForRegister.address"
+                    name="address" required #address="ngModel" />
+                <div *ngIf="address.invalid && (address.dirty || address.touched)" class="text-danger">
+                    <div *ngIf="address.hasError('required')">Address is required.</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" [(ngModel)]="userForRegister.email" name="email"
+                    required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" #email="ngModel" />
+
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
+                    <div *ngIf="email.hasError('required')">Email is required.</div>
+                    <div *ngIf="email.hasError('pattern')">Invalid email format.</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" [(ngModel)]="userForRegister.password"
+                    name="password" required
+                    pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,10}$"
+                    #password="ngModel" />
+
+                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
+                    <div *ngIf="password.hasError('required')">Password is required.</div>
+                    <div *ngIf="password.hasError('pattern')">
+                        Password must be 6-10 characters long and contain at least one
+                        lowercase letter, one uppercase letter, one digit, and one special
+                        character.
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" class="form-control" id="confirmPassword"
+                    [(ngModel)]="userForRegister.confirmPassword" name="confirmPassword" required
+                    #confirmPassword="ngModel" />
+                <div *ngIf="
+            confirmPassword.invalid &&
+            (confirmPassword.dirty || confirmPassword.touched)
+          " class="text-danger">
+                    <div *ngIf="confirmPassword.hasError('required')">
+                        Confirm Password is required.
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="type">User Type</label>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="personal" [(ngModel)]="userForRegister.type"
+                        name="type" value="personal" required />
+                    <label class="form-check-label" for="personal">Personal</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="comapny" [(ngModel)]="userForRegister.type"
+                        name="type" value="comapny" required />
+                    <label class="form-check-label" for="comapny">Comapny</label>
+                </div>
+                <div *ngIf="
+            registerForm.controls['type'].invalid &&
+            (registerForm.controls['type'].dirty ||
+              registerForm.controls['type'].touched)
+          " class="text-danger">
+                    <div *ngIf="registerForm.controls['type'].hasError('required')">
+                        User Type is required.
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">
+                Register
+            </button>
+        </form>
+    </div>
+</div>
