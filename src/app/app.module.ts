@@ -1,5 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { OrderComponent } from './pages/order/order.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthInterceptor } from './auth-intercept/auth.interceptor';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -22,6 +29,7 @@ import { ChangePasswordComponent } from './pages/change-password/change-password
 @NgModule({
   declarations: [
     AppComponent,
+    OrderComponent
     LoginComponent,
     RegisterComponent,
     ForgetPasswordComponent,
@@ -36,16 +44,23 @@ import { ChangePasswordComponent } from './pages/change-password/change-password
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     ToastrModule.forRoot({
       closeButton: true,
       positionClass: 'toast-bottom-right',
-    }), // ToastrModule added
+    }), 
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent],
 })
