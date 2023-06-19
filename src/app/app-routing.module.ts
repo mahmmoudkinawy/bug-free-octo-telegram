@@ -5,6 +5,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ForgetPasswordComponent } from './pages/forget-password/forget-password.component';
 import { HomeComponent } from './pages/home/home.component';
+import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
+import { VerifyPasswordComponent } from './pages/verify-password/verify-password.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -14,8 +16,16 @@ const routes: Routes = [
     component: RegisterComponent,
   },
   {
-    path: 'forget-password',
+    path: 'forgot-password',
     component: ForgetPasswordComponent,
+  },
+  {
+    path: 'verify-otp',
+    component: VerifyPasswordComponent,
+  },
+  {
+    path: 'update-password',
+    component: UpdatePasswordComponent,
   },
 ];
 

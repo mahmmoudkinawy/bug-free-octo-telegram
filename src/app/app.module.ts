@@ -13,6 +13,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
 
 import { ToastrModule } from 'ngx-toastr';
+import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
+import { VerifyPasswordComponent } from './pages/verify-password/verify-password.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { ToastrModule } from 'ngx-toastr';
     ForgetPasswordComponent,
     HeaderComponent,
     HomeComponent,
+    UpdatePasswordComponent,
+    VerifyPasswordComponent,
   ],
   imports: [
     BrowserModule,

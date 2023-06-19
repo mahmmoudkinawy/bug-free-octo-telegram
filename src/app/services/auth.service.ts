@@ -29,6 +29,27 @@ export class AuthService {
     );
   }
 
+  updatePassword(userId: string, password: string, confirmPassword: string) {
+    return this.http.patch<any>(`${this.apiUrl}/updatepassword`, {
+      userId: userId,
+      password: password,
+      confirmPassword: confirmPassword,
+    });
+  }
+
+  verifyOtp(email: string, otp: string) {
+    return this.http.post<any>(`${this.apiUrl}/verifyotp`, {
+      email: email,
+      otp: otp,
+    });
+  }
+
+  forgetPassword(email: string) {
+    return this.http.post<any>(`${this.apiUrl}/forget`, {
+      email: email,
+    });
+  }
+
   setUserToLocalStorage(user: User) {
     this.currentUser$.next(user);
     localStorage.setItem('user', JSON.stringify(user));
