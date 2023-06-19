@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -15,6 +15,9 @@ import { HomeComponent } from './pages/home/home.component';
 import { ToastrModule } from 'ngx-toastr';
 import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
 import { VerifyPasswordComponent } from './pages/verify-password/verify-password.component';
+import { MyProfileComponent } from './pages/my-profile/my-profile.component';
+import { JwtInterceptor } from './interceptors/jwt.interceptor';
+import { ChangePasswordComponent } from './pages/change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,8 @@ import { VerifyPasswordComponent } from './pages/verify-password/verify-password
     HomeComponent,
     UpdatePasswordComponent,
     VerifyPasswordComponent,
+    MyProfileComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +44,9 @@ import { VerifyPasswordComponent } from './pages/verify-password/verify-password
       positionClass: 'toast-bottom-right',
     }), // ToastrModule added
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

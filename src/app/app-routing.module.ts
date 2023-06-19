@@ -7,6 +7,8 @@ import { ForgetPasswordComponent } from './pages/forget-password/forget-password
 import { HomeComponent } from './pages/home/home.component';
 import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
 import { VerifyPasswordComponent } from './pages/verify-password/verify-password.component';
+import { MyProfileComponent } from './pages/my-profile/my-profile.component';
+import { ChangePasswordComponent } from './pages/change-password/change-password.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -26,6 +28,14 @@ const routes: Routes = [
   {
     path: 'update-password',
     component: UpdatePasswordComponent,
+  },
+  {
+    path: 'change-password',
+    component: ChangePasswordComponent,
+  },
+  {
+    path: 'my-profile',
+    component: MyProfileComponent,
   },
 ];
 

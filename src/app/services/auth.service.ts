@@ -5,6 +5,7 @@ import { BehaviorSubject, map } from 'rxjs';
 import { UserForLogin } from '../models/user-for-login';
 import { UserForRegister } from '../models/user-for-register';
 import { User } from '../models/user';
+import { UserInformation } from '../models/user-information';
 
 @Injectable({
   providedIn: 'root',
@@ -27,6 +28,18 @@ export class AuthService {
       `${this.apiUrl}/register?type=${userForRegister.type}`,
       userForRegister
     );
+  }
+
+  changePassword(
+    oldPassword: string,
+    newPassword: string,
+    newConfirmPassword: string
+  ) {
+    return this.http.patch<any>(`${this.apiUrl}/changepassword`, {
+      oldPassword: oldPassword,
+      newPassword: newPassword,
+      newConfirmPassword: newConfirmPassword,
+    });
   }
 
   updatePassword(userId: string, password: string, confirmPassword: string) {
@@ -53,6 +66,10 @@ export class AuthService {
   setUserToLocalStorage(user: User) {
     this.currentUser$.next(user);
     localStorage.setItem('user', JSON.stringify(user));
+  }
+
+  currentUserProfile() {
+    return this.http.get<UserInformation>(`${this.apiUrl}/userInfo`);
   }
 
   logout() {

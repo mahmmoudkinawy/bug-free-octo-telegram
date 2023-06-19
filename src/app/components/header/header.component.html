@@ -22,7 +22,8 @@
 
         <ul class="navbar-nav">
             <li class="nav-item" *ngIf="(authService.currentUser$ | async) && user">
-                <a class="nav-link">Welcome {{user!.user.firstName + ' ' + user!.user.lastName | titlecase}}</a>
+                <a class="nav-link" routerLink="/my-profile">Welcome
+                    {{user!.user.firstName + ' ' + user!.user.lastName | titlecase}}</a>
             </li>
             <ng-container *ngIf="(authService.currentUser$ | async) === undefined">
                 <li class="nav-item">
