@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { OrderComponent } from './pages/order/order.component';
+import { OrderComponent } from './pages/order/orders/order.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -32,8 +32,12 @@ import { UsersComponent } from './pages/users/users.component';
 import { CreateSupervisorComponent } from './pages/supervisors/create-supervisor/create-supervisor.component';
 import { HasRoleDirective } from './directives/has-role.directive';
 import { MangerOrderComponent } from './pages/manger-order/manger-order.component';
-
-
+import { PageNtFoundComponent } from './components/page-nt-found/page-nt-found.component';
+import { GetRateComponent } from './pages/order/get-rate/get-rate.component';
+import { ReviewComponent } from './pages/order/review/review.component';
+import { TackerComponent } from './pages/order/tacker/tacker.component';
+import { LocationComponent } from './pages/manger-order/location/location/location.component';
+// import { GoogleMapsModule } from '@angular/google-maps';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +61,12 @@ import { MangerOrderComponent } from './pages/manger-order/manger-order.componen
     UsersComponent,
     CreateSupervisorComponent,
     HasRoleDirective,
-    MangerOrderComponent
+    MangerOrderComponent,
+    PageNtFoundComponent,
+    GetRateComponent,
+    ReviewComponent,
+    TackerComponent,
+    LocationComponent
   ],
   imports: [
     BrowserModule,
@@ -67,6 +76,7 @@ import { MangerOrderComponent } from './pages/manger-order/manger-order.componen
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+
     ToastrModule.forRoot({
       closeButton: true,
       positionClass: 'toast-bottom-right',

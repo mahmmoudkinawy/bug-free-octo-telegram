@@ -1,11 +1,12 @@
 <!-- Add necessary CSS and Bootstrap links in the head section of your HTML file -->
 
-<div class="container">
+<div>
   <h2>Orders</h2>
 
   <table class="table table-striped">
     <thead>
       <tr>
+        <th>OrderId</th>
         <th>Sender Name</th>
         <th>Receiver Name</th>
         <th>Category</th>
@@ -15,6 +16,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let order of orders">
+        <td>{{ order._id }}</td>
         <td>{{ order.senderName }}</td>
         <td>{{ order.receivedName }}</td>
         <td>{{ order.category }}</td>
@@ -27,38 +29,8 @@
     </tbody>
   </table>
 
-  <h2>Get Rate</h2>
-<div class="rate" *ngIf="rateForm">
-  <form [formGroup]="rateForm" (ngSubmit)="getRate()" class="rate-form">
-    <div class="form-group">
-      <label>Dcountry:</label>
-      <input type="text" formControlName="Dcountry" class="form-control" />
-    </div>
-    <div class="form-group">
-      <label>Rcountry:</label>
-      <input type="text" formControlName="Rcountry" class="form-control" />
-    </div>
-    <div class="form-group">
-      <label>weight:</label>
-      <input type="number" formControlName="weight" class="form-control" />
-    </div>
-    <div class="form-group">
-      <label>Npackge:</label>
-      <input type="number" formControlName="Npackge" class="form-control" />
-    </div>
-
-    <div *ngIf="errorMessage" class="error-message">
-      {{ errorMessage }}
-    </div>
-
-    <button type="submit" class="btn btn-primary">Get Rate</button>
-  </form>
-</div>
-  <div *ngIf="rateData" class="rate-result">
-    <h3>Rate Result:</h3>
-    <pre class="rate-result">{{ rateData|json }}</pre>
-  </div>
-
+  <br>
+  <br>
 
   <div class="all" *ngIf="orderForm">
     <form [formGroup]="orderForm" (ngSubmit)="submitOrder()" class="order-form">
@@ -69,10 +41,18 @@
           <div class="form-group">
             <label>Name:</label>
             <input type="text" formControlName="senderName" class="form-control" />
+            <div *ngIf="orderForm.get('senderName')?.errors && orderForm.get('senderName')?.touched"
+              class="error-message">
+              <span *ngIf="orderForm.get('senderName')?.hasError('required')">Name is required.</span>
+            </div>
           </div>
           <div class="form-group">
             <label>Phone:</label>
             <input type="text" formControlName="senderPhone" class="form-control" />
+            <div *ngIf="orderForm.get('senderPhone')?.errors && orderForm.get('senderPhone')?.touched"
+              class="error-message">
+              <span *ngIf="orderForm.get('senderPhone')?.hasError('required')">add 11 number.</span>
+            </div>
           </div>
           <div class="form-group">
             <label>Email:</label>
@@ -90,6 +70,8 @@
           </div>
         </div>
       </div>
+      <br>
+      <br>
 
       <!-- Receiver Information -->
       <h2>Receiver Information</h2>
@@ -102,6 +84,10 @@
           <div class="form-group">
             <label>Phone:</label>
             <input type="text" formControlName="receivedPhone" class="form-control" />
+            <div *ngIf="orderForm.get('receivedPhone')?.errors && orderForm.get('receivedPhone')?.touched"
+              class="error-message">
+              <span *ngIf="orderForm.get('receivedPhone')?.hasError('required')">add 11 number.</span>
+            </div>
           </div>
           <div class="form-group">
             <label>Email:</label>
@@ -131,20 +117,36 @@
           <div class="form-group">
             <label>Weight:</label>
             <input type="number" formControlName="weight" class="form-control" />
+            <div *ngIf="orderForm.get('weight')?.errors && orderForm.get('weight')?.touched"
+              class="error-message">
+              <span *ngIf="orderForm.get('weight')?.hasError('required')">add weight number.</span>
+            </div>
           </div>
           <div class="form-group">
             <label>Dimension:</label>
             <input type="text" formControlName="dimension" class="form-control" />
+            <div *ngIf="orderForm.get('dimension')?.errors && orderForm.get('dimension')?.touched"
+              class="error-message">
+              <span *ngIf="orderForm.get('dimension')?.hasError('required')">add dimension.</span>
+            </div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
             <label>Services:</label>
             <input type="text" formControlName="services" class="form-control" />
+            <div *ngIf="orderForm.get('services')?.errors && orderForm.get('services')?.touched"
+              class="error-message">
+              <span *ngIf="orderForm.get('services')?.hasError('required')">add a number.</span>
+            </div>
           </div>
           <div class="form-group">
             <label>Notes:</label>
             <input type="text" formControlName="notes" class="form-control" />
+            <div *ngIf="orderForm.get('notes')?.errors && orderForm.get('notes')?.touched"
+              class="error-message">
+              <span *ngIf="orderForm.get('notes')?.hasError('required')">add notes.</span>
+            </div>
           </div>
         </div>
       </div>
@@ -154,12 +156,20 @@
           <div class="form-group">
             <label>Payment ID:</label>
             <input type="text" formControlName="paymentId" class="form-control" />
+            <div *ngIf="orderForm.get('paymentId')?.errors && orderForm.get('paymentId')?.touched"
+              class="error-message">
+              <span *ngIf="orderForm.get('paymentId')?.hasError('required')">add paymentId number.</span>
+            </div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
             <label>Delivery Time:</label>
             <input type="text" formControlName="deliverTime" class="form-control" />
+            <div *ngIf="orderForm.get('deliverTime')?.errors && orderForm.get('deliverTime')?.touched"
+              class="error-message">
+              <span *ngIf="orderForm.get('deliverTime')?.hasError('required')">add deliverTime.</span>
+            </div>
           </div>
         </div>
       </div>
@@ -171,22 +181,10 @@
       <button type="submit" class="btn btn-primary">Submit Order</button>
     </form>
   </div>
+<br>
+<br>
+<br>
 
-  <div class="container">
-    <h2 class="text-center">Make a Review</h2>
-    <div class="form-group">
-      <label for="orderId">Order ID:</label>
-      <input type="text" id="orderId" class="form-control" [(ngModel)]="orderId">
-    </div>
-    <div class="form-group">
-      <label for="delegateId">Delegate ID:</label>
-      <input type="text" id="delegateId" class="form-control" [(ngModel)]="delegateId">
-    </div>
-    <div class="form-group">
-      <label for="review">Review (1-5):</label>
-      <input type="number" id="review" class="form-control" [(ngModel)]="review" min="1" max="5">
-    </div>
-    <button class="btn btn-primary" (click)="makeReview()">Submit Review</button>
-  </div>
+
 
 </div>

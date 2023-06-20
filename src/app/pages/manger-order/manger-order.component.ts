@@ -27,7 +27,6 @@ export class MangerOrderComponent implements OnInit {
     });
     this.route.params.subscribe((params) => {
       this.delegateId = params['delegateId'];
-      this.getDelegateLocation();
     });
     this.getOrders();
     this.getReviews();
@@ -65,20 +64,7 @@ export class MangerOrderComponent implements OnInit {
     );
   }
 
-  getDelegateLocation() {
-    if (this.delegateId) {
-      this.manageServices.getDelegateLocation(this.delegateId).subscribe(
-        (response: any) => {
-          this.delegateLocation = response.Location[0];
-        },
-        (error: any) => {
-          this.errorMessage = error.message;
-        }
-      );
-    } else {
-      // this.errorMessage = 'Delegate ID is not provided.';
-    }
-  }
+
 
   deleteOrder() {
     if (this.orderId) {

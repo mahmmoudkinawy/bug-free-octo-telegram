@@ -1,5 +1,6 @@
 export interface Order {
-  _id:string;
+  _id: string;
+  trackId: string;
   senderName: string;
   senderPhone: string;
   senderEmail: string;
@@ -17,4 +18,20 @@ export interface Order {
   notes: string;
   paymentId: string;
   deliverTime: string;
+  user: {
+    _id: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone: string;
+    address: string;
+  };
+  delegate: {
+    _id: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone: string;
+    address: string;
+  };
 }

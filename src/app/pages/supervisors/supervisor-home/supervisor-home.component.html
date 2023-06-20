@@ -131,6 +131,7 @@
 <table class="table">
   <thead>
     <tr>
+      <th>Id</th>
       <th>First Name</th>
       <th>Last Name</th>
       <th>Email</th>
@@ -141,6 +142,8 @@
   </thead>
   <tbody>
     <tr *ngFor="let delegate of delegates">
+      <td>{{ delegate._id }}</td>
+
       <td>{{ delegate.firstName }}</td>
       <td>{{ delegate.lastName }}</td>
       <td>{{ delegate.email }}</td>

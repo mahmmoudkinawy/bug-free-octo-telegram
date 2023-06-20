@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { OrderComponent } from './pages/order/order.component';
+import { OrderComponent } from './pages/order/orders/order.component';
 import { AuthGuard } from './gared/auth.guard';
 
 import { LoginComponent } from './pages/login/login.component';
@@ -24,10 +24,18 @@ import { UsersComponent } from './pages/users/users.component';
 import { ManagerGuard } from './gared/manager.guard';
 import { CreateSupervisorComponent } from './pages/supervisors/create-supervisor/create-supervisor.component';
 import { MangerOrderComponent } from './pages/manger-order/manger-order.component';
+import { PageNtFoundComponent } from './components/page-nt-found/page-nt-found.component';
+import { GetRateComponent } from './pages/order/get-rate/get-rate.component';
+import { ReviewComponent } from './pages/order/review/review.component';
+import { TackerComponent } from './pages/order/tacker/tacker.component';
+import { LocationComponent } from './pages/manger-order/location/location/location.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'order', component: OrderComponent, canActivate: [AuthGuard] },
+  { path: 'rate', component: GetRateComponent, canActivate: [AuthGuard] },
+  { path: 'rewiew', component: ReviewComponent, canActivate: [AuthGuard] },
+  { path: 'tacker', component: TackerComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'deleget', component: DelegetsComponent },
@@ -92,7 +100,10 @@ const routes: Routes = [
     component: CreateSupervisorComponent,
     canActivate: [AuthGuard, ManagerGuard],
   },
-  { path: 'manger', component: MangerOrderComponent }
+  { path: 'manger', component: MangerOrderComponent },
+  { path: 'location', component: LocationComponent },
+  { path: 'not-found', component: PageNtFoundComponent },
+  { path: '**', redirectTo: 'not-found' },
 ];
 
 @NgModule({

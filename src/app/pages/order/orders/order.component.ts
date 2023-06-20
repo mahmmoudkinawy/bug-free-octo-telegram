@@ -17,6 +17,7 @@ export class OrderComponent implements OnInit {
 
   order: Order = {
     _id: '',
+    trackId: '',
     senderName: '',
     senderPhone: '',
     senderEmail: '',
@@ -34,7 +35,24 @@ export class OrderComponent implements OnInit {
     notes: '',
     paymentId: '',
     deliverTime: '',
+    user: {
+      _id: '',
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      address: ''
+    },
+    delegate: {
+      _id: '',
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      address: '',
+    }
   };
+
   errorMessage: string = '';
   orderForm: FormGroup | null = null;
 
@@ -47,23 +65,23 @@ export class OrderComponent implements OnInit {
 
   ngOnInit() {
     this.orderForm = this.formBuilder.group({
-      senderName: ['', Validators.required],
-      senderPhone: ['', Validators.required],
-      senderEmail: ['', [Validators.required, Validators.email]],
-      senderPostalCode: ['', Validators.required],
-      senderAddress: ['', Validators.required],
-      receivedName: ['', Validators.required],
-      receivedPhone: ['', Validators.required],
-      receivedEmail: ['', [Validators.required, Validators.email]],
-      receivedPostalCode: ['', Validators.required],
-      receivedAddress: ['', Validators.required],
-      category: ['', Validators.required],
-      weight: [0, Validators.required],
-      dimension: ['', Validators.required],
-      services: ['', Validators.required],
-      notes: ['', Validators.required],
-      paymentId: ['', Validators.required],
-      deliverTime: ['', Validators.required],
+        senderName: ['', Validators.required],
+        senderPhone: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]],
+        senderEmail: ['', [Validators.required, Validators.email]],
+        senderPostalCode: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]],
+        senderAddress: ['', Validators.required],
+        receivedName: ['', Validators.required],
+        receivedPhone: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]],
+        receivedEmail: ['', [Validators.required, Validators.email]],
+        receivedPostalCode: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]],
+        receivedAddress: ['', Validators.required],
+        category: ['', Validators.required],
+        weight: ['', Validators.required],
+        dimension: [''],
+        services: ['', Validators.required],
+        deliverTime: ['', Validators.required],
+        paymentId: ['', Validators.required],
+        notes: ['']
     });
 
     this.rateForm = this.formBuilder.group({
@@ -128,51 +146,5 @@ export class OrderComponent implements OnInit {
     );
   }
 
-  getRate() {
-    if (this.rateForm?.valid) {
-      const data = {
-        Dcountry: this.rateForm.value.Dcountry,
-        Rcountry: this.rateForm.value.Rcountry,
-        weight: this.rateForm.value.weight,
-        Npackge: this.rateForm.value.Npackge,
-      };
 
-      this.orderService.getRate(data).subscribe(
-        (rateResponse: any) => {
-          this.rateData = rateResponse;
-          // console.log(this.rateData);
-          this.errorMessage = '';
-        },
-        (error) => {
-          console.error('Error getting rate:', error);
-          this.errorMessage = 'Error getting rate. Please try again.';
-          this.rateData = null;
-        }
-      );
-    } else {
-      this.errorMessage = 'Please fill in all the required fields.';
-    }
-  }
-
-  orderId: string='';
-  delegateId: string='';
-  review: number=0;
-  makeReview(): void {
-    if (!this.orderId || !this.delegateId || !this.review) {
-      console.error('All fields are required');
-      return;
-    }
-
-    this.orderService.makeReview(this.orderId, this.delegateId, this.review).subscribe(
-      () => {
-        this.toastr.success('Review submitted successfully');
-        window.location.reload();
-        // Perform any necessary actions after successful review submission
-      },
-      (error: any) => {
-        console.error(error);
-        // Handle error appropriately
-      }
-    );
-  }
 }
