@@ -1,0 +1,11 @@
+.empty-orders {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.empty-orders p {
+  font-size: 18px;
+  color: #777;
+}

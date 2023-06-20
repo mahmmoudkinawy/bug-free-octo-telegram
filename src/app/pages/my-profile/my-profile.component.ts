@@ -15,8 +15,9 @@ export class MyProfileComponent implements OnInit {
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.authService
-      .currentUserProfile()
-      .subscribe((userInfo) => (this.userInformation = userInfo));
+    this.authService.currentUserProfile().subscribe((userInfo) => {
+      this.userInformation = userInfo;
+      console.log(userInfo);
+    });
   }
 }

@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { OrderComponent } from './pages/order/order.component';
-import { AuthInterceptor } from './auth-intercept/auth.interceptor';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -20,7 +19,16 @@ import { VerifyPasswordComponent } from './pages/verify-password/verify-password
 import { MyProfileComponent } from './pages/my-profile/my-profile.component';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { ChangePasswordComponent } from './pages/change-password/change-password.component';
+
 import { DelegetsComponent } from './pages/delegets/delegets.component';
+
+import { AboutComponent } from './pages/about/about.component';
+import { SupervisorHomeComponent } from './pages/supervisors/supervisor-home/supervisor-home.component';
+import { SupervisorHasRoleDirective } from './directives/supervisor-has-role.directive';
+import { OrdersSupervisorComponent } from './pages/orders-supervisor/orders-supervisor.component';
+import { MyOrdersComponent } from './pages/my-orders/my-orders.component';
+import { ProofsComponent } from './pages/proofs/proofs.component';
+
 
 @NgModule({
   declarations: [
@@ -36,6 +44,12 @@ import { DelegetsComponent } from './pages/delegets/delegets.component';
     MyProfileComponent,
     ChangePasswordComponent,
     DelegetsComponent,
+    AboutComponent,
+    SupervisorHomeComponent,
+    SupervisorHasRoleDirective,
+    OrdersSupervisorComponent,
+    MyOrdersComponent,
+    ProofsComponent
   ],
   imports: [
     BrowserModule,
@@ -52,11 +66,6 @@ import { DelegetsComponent } from './pages/delegets/delegets.component';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true,
-    },
   ],
   bootstrap: [AppComponent],
 })
