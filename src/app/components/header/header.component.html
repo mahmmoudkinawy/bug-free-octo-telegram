@@ -10,11 +10,12 @@
                 <a class="nav-link" routerLink="/home">Home</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" routerLink="/manger">Manger</a>
+          </li>
+            <li class="nav-item">
                 <a class="nav-link" routerLink="/order">Orders</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Contact</a>
-            </li>
+
             <ng-container *ngIf="(authService.currentUser$ | async) && user">
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/deleget">Deleget</a>

@@ -20,6 +20,7 @@ import { SupervisorHomeComponent } from './pages/supervisors/supervisor-home/sup
 import { OrdersSupervisorComponent } from './pages/orders-supervisor/orders-supervisor.component';
 import { MyOrdersComponent } from './pages/my-orders/my-orders.component';
 import { ProofsComponent } from './pages/proofs/proofs.component';
+import { MangerOrderComponent } from './pages/manger-order/manger-order.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'deleget', component: DelegetsComponent },
+
   {
     path: 'register',
     component: RegisterComponent,
@@ -77,6 +79,8 @@ const routes: Routes = [
     component: ProofsComponent,
     canActivate: [AuthGuard, SupervisorGuard],
   },
+  { path: 'manger', component: MangerOrderComponent },
+
 ];
 
 @NgModule({
