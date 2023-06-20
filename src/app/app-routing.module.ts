@@ -23,7 +23,7 @@ import { ProofsComponent } from './pages/proofs/proofs.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'orders', component: OrderComponent, canActivate: [AuthGuard] },
+  { path: 'order', component: OrderComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'deleget', component: DelegetsComponent },
