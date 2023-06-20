@@ -17,6 +17,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { SupervisorHomeComponent } from './pages/supervisors/supervisor-home/supervisor-home.component';
 import { OrdersSupervisorComponent } from './pages/orders-supervisor/orders-supervisor.component';
 import { MyOrdersComponent } from './pages/my-orders/my-orders.component';
+import { ProofsComponent } from './pages/proofs/proofs.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -65,6 +66,11 @@ const routes: Routes = [
   {
     path: 'orders-for-supervisors',
     component: OrdersSupervisorComponent,
+    canActivate: [AuthGuard, SupervisorGuard],
+  },
+  {
+    path: 'proofs',
+    component: ProofsComponent,
     canActivate: [AuthGuard, SupervisorGuard],
   },
 ];

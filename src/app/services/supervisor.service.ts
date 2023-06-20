@@ -5,6 +5,7 @@ import { DelegateResponse } from '../models/delegate-response';
 import { Delegate, Delegates } from '../models/delegate';
 import { map } from 'rxjs';
 import { OrderResult } from '../models/order-response';
+import { Proof, ProofResponse } from '../models/proof-response';
 
 @Injectable({
   providedIn: 'root',
@@ -22,6 +23,18 @@ export class SupervisorService {
     return this.http
       .get<OrderResult>(`${this.apiUrl}/orders`)
       .pipe(map((res) => res.orders));
+  }
+
+  loadProofs() {
+    return this.http
+      .get<ProofResponse>(`${this.apiUrl}/proofs`)
+      .pipe(map((res) => res.Proofs));
+  }
+
+  deleteProof(proof: Proof) {
+    return this.http.delete<ProofResponse>(
+      `${this.apiUrl}/proofs/${proof._id}`
+    );
   }
 
   loadAllOrders() {
