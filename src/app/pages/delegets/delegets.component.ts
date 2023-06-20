@@ -7,16 +7,19 @@ import { DelegateService } from 'src/app/services/delegets.service';
 @Component({
   selector: 'app-delegets',
   templateUrl: './delegets.component.html',
-  styleUrls: ['./delegets.component.css']
+  styleUrls: ['./delegets.component.css'],
 })
-export class DelegetsComponent implements OnInit{
-  orders: DelegateOrder[]|null = null;
-  delegateOrders: DelegateOrder[]|null = null;
-  orderId: string ='';
-  orderIdTack: string ='';
+export class DelegetsComponent implements OnInit {
+  orders: DelegateOrder[] | null = null;
+  delegateOrders: DelegateOrder[] | null = null;
+  orderId: string = '';
+  orderIdTack: string = '';
   proofImage: File | null = null;
 
-  constructor(private delegateService: DelegateService,private toastr:ToastrService) { }
+  constructor(
+    private delegateService: DelegateService,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.getAllOrders();
@@ -40,14 +43,13 @@ export class DelegetsComponent implements OnInit{
     );
   }
 
-
   getDelegateOrders(): void {
     this.delegateService.getDelegateOrders().subscribe(
-      (response:any) => {
+      (response: any) => {
         if (response && response.orders && Array.isArray(response.orders)) {
-        this.delegateOrders = response.orders;
-        // console.log(this.delegateOrders)
-        }else {
+          this.delegateOrders = response.orders;
+          // console.log(this.delegateOrders)
+        } else {
           console.error('Invalid response format:', response);
           // Handle the case when the response format is not as expected
         }
@@ -57,7 +59,6 @@ export class DelegetsComponent implements OnInit{
       }
     );
   }
-
 
   onFileSelected(event: any) {
     this.proofImage = event.target.files[0];
@@ -74,7 +75,7 @@ export class DelegetsComponent implements OnInit{
         this.toastr.success('Proof added successfully.');
         window.location.reload();
       },
-      error => {
+      (error) => {
         console.error('Error adding proof:', error);
       }
     );
@@ -89,28 +90,28 @@ export class DelegetsComponent implements OnInit{
     this.delegateService.takeOrder(this.orderIdTack).subscribe(
       () => {
         this.toastr.success('Proof added successfully.');
-        window.location.reload();
+        this.getDelegateOrders();
       },
-      error => {
+      (error) => {
         console.error('Error taking order:', error);
       }
     );
   }
 
-  orderPutId: string='';
-  confirmationType: string='';
+  orderPutId: string = '';
+  confirmationType: string = '';
   confirmOrder(): void {
-    this.delegateService.confirmOrder(this.orderPutId, this.confirmationType).subscribe(
-      () => {
-        this.toastr.success('Order confirmed successfully.');
-        window.location.reload();
-      },
-      (error: any) => {
-        window.location.reload();
-        console.error(error);
-      }
-    );
+    this.delegateService
+      .confirmOrder(this.orderPutId, this.confirmationType)
+      .subscribe(
+        () => {
+          this.toastr.success('Order confirmed successfully.');
+          window.location.reload();
+        },
+        (error: any) => {
+          window.location.reload();
+          console.error(error);
+        }
+      );
   }
-
-
 }
