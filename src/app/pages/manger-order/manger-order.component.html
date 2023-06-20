@@ -1,0 +1,168 @@
+<!-- Add the necessary Bootstrap CSS and JavaScript files to your Angular project -->
+
+<div class="container">
+  <h2>Orders</h2>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Order ID</th>
+        <th>Sender Name</th>
+        <th>Sender Phone</th>
+        <th>Receiver Name</th>
+        <th>Receiver Phone</th>
+        <th>Category</th>
+        <th>Weight</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders">
+        <td>{{ order._id }}</td>
+        <td>{{ order.senderName }}</td>
+        <td>{{ order.senderPhone }}</td>
+        <td>{{ order.receivedName }}</td>
+        <td>{{ order.receivedPhone }}</td>
+        <td>{{ order.category }}</td>
+        <td>{{ order.weight }}</td>
+        <td>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<br>
+<br>
+
+<div class="container">
+  <h1 >Order Details</h1>
+  <br>
+  <div >
+    <label for="orderId">Order ID:</label>
+    <br>
+    <input type="text"  class="form-control" id="orderId" [(ngModel)]="orderId" />
+    <br>
+    <button class="btn btn-primary" (click)="getOrder(orderId)">Get Order</button>
+  </div>
+
+  <div *ngIf="order">
+    <h2>Order Details</h2>
+
+    <div>
+      <strong>Order ID:</strong> {{ order._id }}
+    </div>
+    <div>
+      <strong>Sender Name:</strong> {{ order.senderName }}
+    </div>
+    <div>
+      <strong>Sender Phone:</strong> {{ order.senderPhone }}
+    </div>
+    <div>
+      <strong>Sender Email:</strong> {{ order.senderEmail }}
+    </div>
+    <div>
+      <strong>Sender Postal Code:</strong> {{ order.senderPostalCode }}
+    </div>
+    <div>
+      <strong>Sender Address:</strong> {{ order.senderAddress }}
+    </div>
+    <div>
+      <strong>Received Name:</strong> {{ order.receivedName }}
+    </div>
+    <div>
+      <strong>Received Phone:</strong> {{ order.receivedPhone }}
+    </div>
+    <div>
+      <strong>Received Email:</strong> {{ order.receivedEmail }}
+    </div>
+    <div>
+      <strong>Received Postal Code:</strong> {{ order.receivedPostalCode }}
+    </div>
+    <div>
+      <strong>Received Address:</strong> {{ order.receivedAddress }}
+    </div>
+    <div>
+      <strong>Category:</strong> {{ order.category }}
+    </div>
+    <div>
+      <strong>Weight:</strong> {{ order.weight }}
+    </div>
+    <div>
+      <strong>Dimension:</strong> {{ order.dimension }}
+    </div>
+    <div>
+      <strong>Services:</strong> {{ order.services }}
+    </div>
+    <div>
+      <strong>Notes:</strong> {{ order.notes }}
+    </div>
+    <div>
+      <strong>Payment ID:</strong> {{ order.paymentId }}
+    </div>
+    <div>
+      <strong>Delivery Time:</strong> {{ order.deliverTime }}
+    </div>
+
+    <div class="mt-3">
+      <!-- <button class="btn btn-primary">Edit</button> -->
+      <button class="btn btn-danger" (click)="deleteOrder()">Delete</button>
+    </div>
+  </div>
+</div>
+
+  <br><br><br>
+  <div class="container">
+    <h1>Delegate Location:</h1>
+    <div class="mb-3">
+      <label for="delegateIdInput" class="form-label">Delegate ID:</label>
+      <input type="text" class="form-control" id="delegateIdInput" [(ngModel)]="delegateId">
+    </div>
+    <button class="btn btn-primary" (click)="getDelegateLocation()">Get Location</button>
+
+    <div *ngIf="errorMessage" class="mt-3">
+      <div class="alert alert-danger" role="alert">
+        Error: {{ errorMessage }}
+      </div>
+    </div>
+
+    <div *ngIf="delegateLocation" class="mt-3">
+      <h2>Location Details:</h2>
+      <p><strong>Delegate ID:</strong> {{ delegateLocation.delegate }}</p>
+      <p><strong>Latitude:</strong> {{ delegateLocation.latitude }}</p>
+      <p><strong>Longitude:</strong> {{ delegateLocation.longitude }}</p>
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
+
+
+  <h2>Reviews</h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <th>Review</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let review of reviews">
+        <td>{{ review.userId.firstName }} {{ review.userId.lastName }}</td>
+        <td>{{ review.userId.email }}</td>
+        <td>{{ review.userId.phone }}</td>
+        <td>{{ review.userId.address }}</td>
+        <td>{{ review.review }}</td>
+        <td>
+          <button class="btn btn-danger" (click)="deleteReview(review._id)">Delete</button>
+        </td>
+      </tr>
+      <tr *ngIf="reviews.length === 0">
+        <td colspan="6">No reviews found.</td>
+      </tr>
+    </tbody>
+  </table>
