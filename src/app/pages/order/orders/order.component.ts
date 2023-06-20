@@ -17,6 +17,7 @@ export class OrderComponent implements OnInit {
 
   order: Order = {
     _id: '',
+    trackId: '',
     senderName: '',
     senderPhone: '',
     senderEmail: '',
@@ -34,7 +35,24 @@ export class OrderComponent implements OnInit {
     notes: '',
     paymentId: '',
     deliverTime: '',
+    user: {
+      _id: '',
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      address: ''
+    },
+    delegate: {
+      _id: '',
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      address: '',
+    }
   };
+
   errorMessage: string = '';
   orderForm: FormGroup | null = null;
 
@@ -127,5 +145,6 @@ export class OrderComponent implements OnInit {
       }
     );
   }
+
 
 }

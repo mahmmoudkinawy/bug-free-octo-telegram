@@ -35,6 +35,7 @@ import { MangerOrderComponent } from './pages/manger-order/manger-order.componen
 import { PageNtFoundComponent } from './components/page-nt-found/page-nt-found.component';
 import { GetRateComponent } from './pages/order/get-rate/get-rate.component';
 import { ReviewComponent } from './pages/order/review/review.component';
+import { TackerComponent } from './pages/order/tacker/tacker.component';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import { ReviewComponent } from './pages/order/review/review.component';
     MangerOrderComponent,
     PageNtFoundComponent,
     GetRateComponent,
-    ReviewComponent
+    ReviewComponent,
+    TackerComponent
   ],
   imports: [
     BrowserModule,

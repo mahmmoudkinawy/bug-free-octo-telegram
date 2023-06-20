@@ -27,12 +27,14 @@ import { MangerOrderComponent } from './pages/manger-order/manger-order.componen
 import { PageNtFoundComponent } from './components/page-nt-found/page-nt-found.component';
 import { GetRateComponent } from './pages/order/get-rate/get-rate.component';
 import { ReviewComponent } from './pages/order/review/review.component';
+import { TackerComponent } from './pages/order/tacker/tacker.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'order', component: OrderComponent, canActivate: [AuthGuard] },
   { path: 'rate', component: GetRateComponent, canActivate: [AuthGuard] },
   { path: 'rewiew', component: ReviewComponent, canActivate: [AuthGuard] },
+  { path: 'tacker', component: TackerComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'deleget', component: DelegetsComponent },

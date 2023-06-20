@@ -15,26 +15,26 @@ export class GetRateComponent implements OnInit {
   rateForm: FormGroup | null = null;
   rateData: any;
 
-  order: Order = {
-    _id: '',
-    senderName: '',
-    senderPhone: '',
-    senderEmail: '',
-    senderPostalCode: '',
-    senderAddress: '',
-    receivedName: '',
-    receivedPhone: '',
-    receivedEmail: '',
-    receivedPostalCode: '',
-    receivedAddress: '',
-    category: '',
-    weight: 0,
-    dimension: '',
-    services: '',
-    notes: '',
-    paymentId: '',
-    deliverTime: '',
-  };
+  // order: Order = {
+  //   _id: '',
+  //   senderName: '',
+  //   senderPhone: '',
+  //   senderEmail: '',
+  //   senderPostalCode: '',
+  //   senderAddress: '',
+  //   receivedName: '',
+  //   receivedPhone: '',
+  //   receivedEmail: '',
+  //   receivedPostalCode: '',
+  //   receivedAddress: '',
+  //   category: '',
+  //   weight: 0,
+  //   dimension: '',
+  //   services: '',
+  //   notes: '',
+  //   paymentId: '',
+  //   deliverTime: '',
+  // };
   errorMessage: string = '';
   orderForm: FormGroup | null = null;
   constructor(
