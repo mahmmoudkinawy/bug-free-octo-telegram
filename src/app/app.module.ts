@@ -31,6 +31,7 @@ import { ProofsComponent } from './pages/proofs/proofs.component';
 import { UsersComponent } from './pages/users/users.component';
 import { CreateSupervisorComponent } from './pages/supervisors/create-supervisor/create-supervisor.component';
 import { HasRoleDirective } from './directives/has-role.directive';
+import { MangerOrderComponent } from './pages/manger-order/manger-order.component';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { HasRoleDirective } from './directives/has-role.directive';
     ProofsComponent,
     UsersComponent,
     CreateSupervisorComponent,
-    HasRoleDirective
+    HasRoleDirective,
+    MangerOrderComponent
   ],
   imports: [
     BrowserModule,

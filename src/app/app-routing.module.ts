@@ -23,6 +23,7 @@ import { ProofsComponent } from './pages/proofs/proofs.component';
 import { UsersComponent } from './pages/users/users.component';
 import { ManagerGuard } from './gared/manager.guard';
 import { CreateSupervisorComponent } from './pages/supervisors/create-supervisor/create-supervisor.component';
+import { MangerOrderComponent } from './pages/manger-order/manger-order.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'deleget', component: DelegetsComponent },
+
   {
     path: 'register',
     component: RegisterComponent,
@@ -90,6 +92,7 @@ const routes: Routes = [
     component: CreateSupervisorComponent,
     canActivate: [AuthGuard, ManagerGuard],
   },
+  { path: 'manger', component: MangerOrderComponent }
 ];
 
 @NgModule({
