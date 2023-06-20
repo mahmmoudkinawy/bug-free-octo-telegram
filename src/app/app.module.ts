@@ -32,6 +32,7 @@ import { UsersComponent } from './pages/users/users.component';
 import { CreateSupervisorComponent } from './pages/supervisors/create-supervisor/create-supervisor.component';
 import { HasRoleDirective } from './directives/has-role.directive';
 import { MangerOrderComponent } from './pages/manger-order/manger-order.component';
+import { PageNtFoundComponent } from './components/page-nt-found/page-nt-found.component';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { MangerOrderComponent } from './pages/manger-order/manger-order.componen
     UsersComponent,
     CreateSupervisorComponent,
     HasRoleDirective,
-    MangerOrderComponent
+    MangerOrderComponent,
+    PageNtFoundComponent
   ],
   imports: [
     BrowserModule,

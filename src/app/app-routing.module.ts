@@ -24,6 +24,7 @@ import { UsersComponent } from './pages/users/users.component';
 import { ManagerGuard } from './gared/manager.guard';
 import { CreateSupervisorComponent } from './pages/supervisors/create-supervisor/create-supervisor.component';
 import { MangerOrderComponent } from './pages/manger-order/manger-order.component';
+import { PageNtFoundComponent } from './components/page-nt-found/page-nt-found.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -92,7 +93,9 @@ const routes: Routes = [
     component: CreateSupervisorComponent,
     canActivate: [AuthGuard, ManagerGuard],
   },
-  { path: 'manger', component: MangerOrderComponent }
+  { path: 'manger', component: MangerOrderComponent },
+  { path: 'not-found', component: PageNtFoundComponent },
+  { path: '**', redirectTo: 'not-found' },
 ];
 
 @NgModule({
