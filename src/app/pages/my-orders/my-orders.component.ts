@@ -17,8 +17,14 @@ export class MyOrdersComponent implements OnInit {
   }
 
   loadCurrentUserOrders() {
-    this.supervisorService
-      .currentUserOrders()
-      .subscribe((result) => (this.orders = result));
-  }
+    this.supervisorService.currentUserOrders().subscribe(
+      (result) => {
+        this.orders = result;
+        console.log(result);
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+    }
 }
