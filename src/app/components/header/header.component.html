@@ -12,12 +12,6 @@
             <li class="nav-item" *appHasRole="1000">
                 <a class="nav-link" routerLink="/order">Orders</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/manger">Manger</a>
-          </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/order">Orders</a>
-            </li>
             <li class="nav-item" *appHasRole="2000">
                 <a class="nav-link" routerLink="/deleget">Deleget</a>
             </li>
@@ -33,22 +27,10 @@
             <li class="nav-item" *appHasRole="4000">
                 <a class="nav-link" routerLink="/users">Users</a>
             </li>
+            <li class="nav-item" *appHasRole="4000">
+                <a class="nav-link" routerLink="/manger">Manager</a>
+            </li>
 
-            <ng-container *ngIf="(authService.currentUser$ | async) && user">
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/deleget">Deleget</a>
-                </li>
-                <li class="nav-item">
-                    <!-- <a class="nav-link" routerLink="/supervisors" *appSupervisorHasRole="'3000'">Supervisors</a> -->
-                    <a class="nav-link" routerLink="/supervisors">Supervisors</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/orders-for-supervisors">Supervisors Orders</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/proofs">Proofs</a>
-                </li>
-            </ng-container>
         </ul>
 
         <ul class="navbar-nav">
