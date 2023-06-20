@@ -1,0 +1,153 @@
+<div class="container">
+  <h2>Create Supervisor</h2>
+
+  <form (ngSubmit)="onSubmit()" #supervisorForm="ngForm">
+    <div class="form-group">
+      <label for="firstName">First Name:</label>
+      <input
+        type="text"
+        id="firstName"
+        class="form-control"
+        name="firstName"
+        [(ngModel)]="supervisor.firstName"
+        required
+        name="firstName"
+        #firstName="ngModel"
+      />
+      <div
+      *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
+      class="text-danger"
+    >
+      <div *ngIf="firstName.hasError('required')">First Name is required.</div>
+  
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">Last Name:</label>
+      <input
+        type="text"
+        id="lastName"
+        class="form-control"
+        name="lastName"
+        [(ngModel)]="supervisor.lastName"
+        required
+        name="lastName"
+        #lastName="ngModel"
+      />
+      <div
+      *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
+      class="text-danger"
+    >
+      <div *ngIf="lastName.hasError('required')">Last Name is required.</div>
+ 
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input
+        type="email"
+        id="email"
+        class="form-control"
+        name="email"
+        [(ngModel)]="supervisor.email"
+        required
+        pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+        name="email"
+        #email="ngModel"
+      />
+      <div
+      *ngIf="email.invalid && (email.dirty || email.touched)"
+      class="text-danger"
+    >
+      <div *ngIf="email.hasError('required')">Email is required.</div>
+      <div *ngIf="email.hasError('pattern')">Invalid email format.</div>
+
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Phone:</label>
+      <input
+        type="tel"
+        id="phone"
+        class="form-control"
+        name="phone"
+        [(ngModel)]="supervisor.phone"
+        pattern="^(00201|\+201|01)[0-2,5]{1}[0-9]{8}$"
+        required
+        #phone="ngModel"
+      />
+      <div
+        *ngIf="phone.invalid && (phone.dirty || phone.touched)"
+        class="text-danger"
+      >
+        <div *ngIf="phone.hasError('required')">Phone Number is required.</div>
+        <div *ngIf="phone.hasError('pattern')">
+          Phone Number is not well formated.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="city">City:</label>
+      <input
+        type="text"
+        id="city"
+        class="form-control"
+        name="city"
+        required
+        #city="ngModel"
+        [(ngModel)]="supervisor.city"
+        required
+      />
+      <div
+        *ngIf="city.invalid && (city.dirty || city.touched)"
+        class="text-danger"
+      >
+        <div *ngIf="city.hasError('required')">City is required.</div>
+       
+      </div>
+    </div>
+
+    <div class="form-group">
+    
+        <label for="userImg" class="form-label">User Image</label>
+        <input
+          type="file"
+          id="userImg"
+          class="form-control"
+          (change)="onFileSelected($event)"
+          accept="image/*"
+          [(ngModel)]="supervisor.userImg"
+          name="userImg"
+          #userImg="ngModel"
+          required
+          [ngModelOptions]="{ updateOn: 'blur' }"
+          [ngClass]="{
+            'is-invalid': userImg.invalid && (userImg.dirty || userImg.touched)
+          }"
+        />
+        <div
+          *ngIf="userImg.invalid && (userImg.dirty || userImg.touched)"
+          class="text-danger"
+        >
+          <div *ngIf="userImg.hasError('required')">User Image is required.</div>
+          <div *ngIf="userImg.hasError('fileFormat')">
+            Only image files are allowed.
+          </div>
+        </div>
+
+    </div>
+
+
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="supervisorForm.invalid"
+    >
+      Create
+    </button>
+  </form>
+</div>

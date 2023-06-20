@@ -1,105 +1,161 @@
 <!-- delegate-page.component.html -->
 
 <div class="container">
-    <h1>Add/Delete Delegates</h1>
+  <h1>Add/Delete Delegates</h1>
 
-    <!-- Add Delegate Form -->
-    <form #delegateForm="ngForm" (submit)="onAddDelegate()" class="mb-4">
-        <div class="mb-3">
-            <label for="firstName" class="form-label">First Name</label>
-            <input type="text" id="firstName" class="form-control" [(ngModel)]="newDelegate.firstName" required
-                name="firstName" #firstName="ngModel" />
+  <!-- Add Delegate Form -->
+  <form #delegateForm="ngForm" (submit)="onAddDelegate()" class="mb-4">
+    <div class="mb-3">
+      <label for="firstName" class="form-label">First Name</label>
+      <input
+        type="text"
+        id="firstName"
+        class="form-control"
+        [(ngModel)]="newDelegate.firstName"
+        required
+        name="firstName"
+        #firstName="ngModel"
+      />
+    </div>
+
+    <div
+      *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
+      class="text-danger"
+    >
+      <div *ngIf="firstName.hasError('required')">First Name is required.</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="lastName" class="form-label">Last Name</label>
+      <input
+        type="text"
+        id="lastName"
+        class="form-control"
+        [(ngModel)]="newDelegate.lastName"
+        required
+        name="lastName"
+        #lastName="ngModel"
+      />
+    </div>
+
+    <div
+      *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
+      class="text-danger"
+    >
+      <div *ngIf="lastName.hasError('required')">Last Name is required.</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        [(ngModel)]="newDelegate!.email"
+        required
+        pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+        name="email"
+        #email="ngModel"
+      />
+
+      <div
+        *ngIf="email.invalid && (email.dirty || email.touched)"
+        class="text-danger"
+      >
+        <div *ngIf="email.hasError('required')">Email is required.</div>
+        <div *ngIf="email.hasError('pattern')">Invalid email format.</div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="phone">Phone</label>
+      <input
+        type="text"
+        class="form-control"
+        id="phone"
+        [(ngModel)]="newDelegate.phone"
+        name="phone"
+        pattern="^(00201|\+201|01)[0-2,5]{1}[0-9]{8}$"
+        required
+        #phone="ngModel"
+      />
+      <div
+        *ngIf="phone.invalid && (phone.dirty || phone.touched)"
+        class="text-danger"
+      >
+        <div *ngIf="phone.hasError('required')">Phone Number is required.</div>
+        <div *ngIf="phone.hasError('pattern')">
+          Phone Number is not well formated.
         </div>
+      </div>
+    </div>
 
-        <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="text-danger">
-            <div *ngIf="firstName.hasError('required')">First Name is required.</div>
-        </div>
-
-        <div class="mb-3">
-            <label for="lastName" class="form-label">Last Name</label>
-            <input type="text" id="lastName" class="form-control" [(ngModel)]="newDelegate.lastName" required
-                name="lastName" #lastName="ngModel" />
-        </div>
-
-        <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="text-danger">
-            <div *ngIf="lastName.hasError('required')">Last Name is required.</div>
-        </div>
-
-        <div class="mb-3">
-            <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" [(ngModel)]="newDelegate!.email" required
-                pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" name="email" #email="ngModel" />
-
-            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
-                <div *ngIf="email.hasError('required')">Email is required.</div>
-                <div *ngIf="email.hasError('pattern')">Invalid email format.</div>
-            </div>
-        </div>
-
-        <div class="mb-3">
-            <label for="phone">Phone</label>
-            <input type="text" class="form-control" id="phone" [(ngModel)]="newDelegate.phone" name="phone"
-                pattern="^(00201|\+201|01)[0-2,5]{1}[0-9]{8}$" required #phone="ngModel" />
-            <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="text-danger">
-                <div *ngIf="phone.hasError('required')">Phone Number is required.</div>
-                <div *ngIf="phone.hasError('pattern')">
-                    Phone Number is not well formated.
-                </div>
-            </div>
-        </div>
-
-        <div class="mb-3">
-            <label for="userImg" class="form-label">User Image</label>
-            <input type="file" id="userImg" class="form-control" (change)="onFileSelected($event)" accept="image/*"
-                [(ngModel)]="newDelegate.userImg" name="userImg" #userImg="ngModel" required
-                [ngModelOptions]="{ updateOn: 'blur' }" [ngClass]="{
+    <div class="mb-3">
+      <label for="userImg" class="form-label">User Image</label>
+      <input
+        type="file"
+        id="userImg"
+        class="form-control"
+        (change)="onFileSelected($event)"
+        accept="image/*"
+        [(ngModel)]="newDelegate.userImg"
+        name="userImg"
+        #userImg="ngModel"
+        required
+        [ngModelOptions]="{ updateOn: 'blur' }"
+        [ngClass]="{
           'is-invalid': userImg.invalid && (userImg.dirty || userImg.touched)
-        }" />
-            <div *ngIf="userImg.invalid && (userImg.dirty || userImg.touched)" class="text-danger">
-                <div *ngIf="userImg.hasError('required')">User Image is required.</div>
-                <div *ngIf="userImg.hasError('fileFormat')">
-                    Only image files are allowed.
-                </div>
-            </div>
+        }"
+      />
+      <div
+        *ngIf="userImg.invalid && (userImg.dirty || userImg.touched)"
+        class="text-danger"
+      >
+        <div *ngIf="userImg.hasError('required')">User Image is required.</div>
+        <div *ngIf="userImg.hasError('fileFormat')">
+          Only image files are allowed.
         </div>
-        <button type="submit" class="btn btn-primary" [disabled]="delegateForm.invalid">
-            Add Delegate
-        </button>
-    </form>
-
-
+      </div>
+    </div>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="delegateForm.invalid"
+    >
+      Add Delegate
+    </button>
+  </form>
 </div>
 
 <!-- Delegate Table -->
 <table class="table">
-    <thead>
-        <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>User Image</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let delegate of delegates">
-            <td>{{ delegate.firstName }}</td>
-            <td>{{ delegate.lastName }}</td>
-            <td>{{ delegate.email }}</td>
-            <td>{{ delegate.phone }}</td>
-            <td>
-                <img [src]="delegate.userImg" alt="User Image" width="50" height="50">
-            </td>
-            <td>
-                <button (click)="onDeleteDelegate(delegate)" class="btn btn-danger">
-                    Delete
-                </button>
-            </td>
-        </tr>
-    </tbody>
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>User Image</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let delegate of delegates">
+      <td>{{ delegate.firstName }}</td>
+      <td>{{ delegate.lastName }}</td>
+      <td>{{ delegate.email }}</td>
+      <td>{{ delegate.phone }}</td>
+      <td>
+        <img [src]="delegate.userImg" alt="User Image" width="50" height="50" />
+      </td>
+      <td>
+        <button (click)="onDeleteDelegate(delegate)" class="btn btn-danger">
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
 </table>
-
 
 <!-- <ul class="list-group">
         <li *ngFor="let delegate of delegates" class="list-group-item">

@@ -22,6 +22,7 @@ import { MyOrdersComponent } from './pages/my-orders/my-orders.component';
 import { ProofsComponent } from './pages/proofs/proofs.component';
 import { UsersComponent } from './pages/users/users.component';
 import { ManagerGuard } from './gared/manager.guard';
+import { CreateSupervisorComponent } from './pages/supervisors/create-supervisor/create-supervisor.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -82,6 +83,11 @@ const routes: Routes = [
   {
     path: 'users',
     component: UsersComponent,
+    canActivate: [AuthGuard, ManagerGuard],
+  },
+  {
+    path: 'create-supervisor',
+    component: CreateSupervisorComponent,
     canActivate: [AuthGuard, ManagerGuard],
   },
 ];

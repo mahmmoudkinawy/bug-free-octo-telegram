@@ -29,6 +29,7 @@ import { OrdersSupervisorComponent } from './pages/orders-supervisor/orders-supe
 import { MyOrdersComponent } from './pages/my-orders/my-orders.component';
 import { ProofsComponent } from './pages/proofs/proofs.component';
 import { UsersComponent } from './pages/users/users.component';
+import { CreateSupervisorComponent } from './pages/supervisors/create-supervisor/create-supervisor.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { UsersComponent } from './pages/users/users.component';
     OrdersSupervisorComponent,
     MyOrdersComponent,
     ProofsComponent,
-    UsersComponent
+    UsersComponent,
+    CreateSupervisorComponent
   ],
   imports: [
     BrowserModule,
