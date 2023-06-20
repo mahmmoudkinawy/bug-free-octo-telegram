@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { OrderComponent } from './pages/order/order.component';
+import { OrderComponent } from './pages/order/orders/order.component';
 import { AuthGuard } from './gared/auth.guard';
 
 import { LoginComponent } from './pages/login/login.component';
@@ -25,10 +25,14 @@ import { ManagerGuard } from './gared/manager.guard';
 import { CreateSupervisorComponent } from './pages/supervisors/create-supervisor/create-supervisor.component';
 import { MangerOrderComponent } from './pages/manger-order/manger-order.component';
 import { PageNtFoundComponent } from './components/page-nt-found/page-nt-found.component';
+import { GetRateComponent } from './pages/order/get-rate/get-rate.component';
+import { ReviewComponent } from './pages/order/review/review.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'order', component: OrderComponent, canActivate: [AuthGuard] },
+  { path: 'rate', component: GetRateComponent, canActivate: [AuthGuard] },
+  { path: 'rewiew', component: ReviewComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'deleget', component: DelegetsComponent },

@@ -1,0 +1,31 @@
+<h2>Get Rate</h2>
+  <div class="rate" *ngIf="rateForm">
+    <form [formGroup]="rateForm" (ngSubmit)="getRate()" class="rate-form">
+      <div class="form-group">
+        <label>Dcountry:</label>
+        <input type="text" formControlName="Dcountry" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label>Rcountry:</label>
+        <input type="text" formControlName="Rcountry" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label>weight:</label>
+        <input type="number" formControlName="weight" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label>Npackge:</label>
+        <input type="number" formControlName="Npackge" class="form-control" />
+      </div>
+
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+
+      <button type="submit" class="btn btn-primary">Get Rate</button>
+    </form>
+  </div>
+  <div *ngIf="rateData" class="rate-result">
+    <h3>Rate Result:</h3>
+    <pre class="rate-result">{{ rateData|json }}</pre>
+  </div>

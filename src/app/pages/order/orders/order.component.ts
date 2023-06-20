@@ -128,51 +128,7 @@ export class OrderComponent implements OnInit {
     );
   }
 
-  getRate() {
-    if (this.rateForm?.valid) {
-      const data = {
-        Dcountry: this.rateForm.value.Dcountry,
-        Rcountry: this.rateForm.value.Rcountry,
-        weight: this.rateForm.value.weight,
-        Npackge: this.rateForm.value.Npackge,
-      };
 
-      this.orderService.getRate(data).subscribe(
-        (rateResponse: any) => {
-          this.rateData = rateResponse;
-          // console.log(this.rateData);
-          this.errorMessage = '';
-        },
-        (error) => {
-          console.error('Error getting rate:', error);
-          this.errorMessage = 'Error getting rate. Please try again.';
-          this.rateData = null;
-        }
-      );
-    } else {
-      this.errorMessage = 'Please fill in all the required fields.';
-    }
-  }
 
-  orderId: string='';
-  delegateId: string='';
-  review: number=0;
-  makeReview(): void {
-    if (!this.orderId || !this.delegateId || !this.review) {
-      console.error('All fields are required');
-      return;
-    }
 
-    this.orderService.makeReview(this.orderId, this.delegateId, this.review).subscribe(
-      () => {
-        this.toastr.success('Review submitted successfully');
-        window.location.reload();
-        // Perform any necessary actions after successful review submission
-      },
-      (error: any) => {
-        console.error(error);
-        // Handle error appropriately
-      }
-    );
-  }
 }

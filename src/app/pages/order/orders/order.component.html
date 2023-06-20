@@ -184,57 +184,7 @@
 <br>
 <br>
 <br>
-  <h2>Get Rate</h2>
-  <div class="rate" *ngIf="rateForm">
-    <form [formGroup]="rateForm" (ngSubmit)="getRate()" class="rate-form">
-      <div class="form-group">
-        <label>Dcountry:</label>
-        <input type="text" formControlName="Dcountry" class="form-control" />
-      </div>
-      <div class="form-group">
-        <label>Rcountry:</label>
-        <input type="text" formControlName="Rcountry" class="form-control" />
-      </div>
-      <div class="form-group">
-        <label>weight:</label>
-        <input type="number" formControlName="weight" class="form-control" />
-      </div>
-      <div class="form-group">
-        <label>Npackge:</label>
-        <input type="number" formControlName="Npackge" class="form-control" />
-      </div>
-
-      <div *ngIf="errorMessage" class="error-message">
-        {{ errorMessage }}
-      </div>
-
-      <button type="submit" class="btn btn-primary">Get Rate</button>
-    </form>
-  </div>
-  <div *ngIf="rateData" class="rate-result">
-    <h3>Rate Result:</h3>
-    <pre class="rate-result">{{ rateData|json }}</pre>
-  </div>
 
 
-
-  <br>
-  <br>
-  <div>
-    <h2 class="text-center">Make a Review</h2>
-    <div class="form-group">
-      <label for="orderId">Order ID:</label>
-      <input type="text" id="orderId" class="form-control" [(ngModel)]="orderId">
-    </div>
-    <div class="form-group">
-      <label for="delegateId">Delegate ID:</label>
-      <input type="text" id="delegateId" class="form-control" [(ngModel)]="delegateId">
-    </div>
-    <div class="form-group">
-      <label for="review">Review (1-5):</label>
-      <input type="number" id="review" class="form-control" [(ngModel)]="review" min="1" max="5">
-    </div>
-    <button class="btn btn-primary" (click)="makeReview()">Submit Review</button>
-  </div>
 
 </div>
