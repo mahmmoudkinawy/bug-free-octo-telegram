@@ -47,23 +47,23 @@ export class OrderComponent implements OnInit {
 
   ngOnInit() {
     this.orderForm = this.formBuilder.group({
-      senderName: ['', Validators.required],
-      senderPhone: ['', Validators.required],
-      senderEmail: ['', [Validators.required, Validators.email]],
-      senderPostalCode: ['', Validators.required],
-      senderAddress: ['', Validators.required],
-      receivedName: ['', Validators.required],
-      receivedPhone: ['', Validators.required],
-      receivedEmail: ['', [Validators.required, Validators.email]],
-      receivedPostalCode: ['', Validators.required],
-      receivedAddress: ['', Validators.required],
-      category: ['', Validators.required],
-      weight: [0, Validators.required],
-      dimension: ['', Validators.required],
-      services: ['', Validators.required],
-      notes: ['', Validators.required],
-      paymentId: ['', Validators.required],
-      deliverTime: ['', Validators.required],
+        senderName: ['', Validators.required],
+        senderPhone: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]],
+        senderEmail: ['', [Validators.required, Validators.email]],
+        senderPostalCode: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]],
+        senderAddress: ['', Validators.required],
+        receivedName: ['', Validators.required],
+        receivedPhone: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]],
+        receivedEmail: ['', [Validators.required, Validators.email]],
+        receivedPostalCode: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]],
+        receivedAddress: ['', Validators.required],
+        category: ['', Validators.required],
+        weight: ['', Validators.required],
+        dimension: [''],
+        services: ['', Validators.required],
+        deliverTime: ['', Validators.required],
+        paymentId: ['', Validators.required],
+        notes: ['']
     });
 
     this.rateForm = this.formBuilder.group({

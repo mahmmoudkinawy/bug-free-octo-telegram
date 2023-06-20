@@ -36,7 +36,7 @@ export class ChangePasswordComponent {
           this.router.navigateByUrl('/');
         },
         (error) => {
-          this.toastr.error('Old password is Worng.');
+          // this.toastr.error('Old password is Worng.');
         }
       );
   }
