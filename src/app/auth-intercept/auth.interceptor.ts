@@ -6,37 +6,34 @@ import {
   HttpInterceptor,
   HttpErrorResponse,
 } from '@angular/common/http';
-import { Observable, catchError,throwError } from 'rxjs';
+import { Observable, catchError,take,throwError } from 'rxjs';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
+import { User } from '../models/user';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(private router: Router) {}
+  constructor(private router: Router ,private authService:AuthService) {}
 
   intercept(
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     // Add your authentication logic here
-    const authToken =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OTBiMWE2OGZmYTg0YTg2Y2E3ZjVmMSIsInJvbGUiOjEwMDAsImlhdCI6MTY4NzIwNDI4MCwiZXhwIjoxNjg3ODA5MDgwfQ.GyxdjvBadU0yUsb7DPYHmtpJ9MHatBLkoIwJJy3WFy0';
+    let currentUser!: User;
 
-    // Clone the request and append the authentication token to the headers
-    const authRequest = request.clone({
-      setHeaders: {
-        Authorization: `Bearer ${authToken}`,
-      },
-    });
+    this.authService.currentUser$
+      .pipe(take(1))
+      .subscribe((user: any) => (currentUser = user));
 
-    return next.handle(authRequest).pipe(
-      catchError((error: HttpErrorResponse) => {
-        if (error.status === 401) {
-          // Handle the "invalid Token" or unauthorized error
-          // For example, redirect the user to the login page
-          this.router.navigate(['/login']);
-        }
-        return throwError(error);
-      })
-    );
+    if (currentUser) {
+      request = request.clone({
+        setHeaders: {
+          Authorization: `Bearer ${currentUser.token}`,
+        },
+      });
+    }
+
+    return next.handle(request);
   }
 }

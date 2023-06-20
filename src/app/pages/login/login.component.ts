@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     email: '',
     password: '',
   };
-  
+
   constructor(
     private authService: AuthService,
     private toastr: ToastrService,
@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.userForLogin).subscribe(
       () => {
         this.toastr.success('Sucess login');
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/order');
       },
       (error) => {
         this.toastr.error('Email or Password is invalid.');
