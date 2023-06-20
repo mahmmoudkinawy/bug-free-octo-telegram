@@ -20,6 +20,9 @@ import { SupervisorHomeComponent } from './pages/supervisors/supervisor-home/sup
 import { OrdersSupervisorComponent } from './pages/orders-supervisor/orders-supervisor.component';
 import { MyOrdersComponent } from './pages/my-orders/my-orders.component';
 import { ProofsComponent } from './pages/proofs/proofs.component';
+import { UsersComponent } from './pages/users/users.component';
+import { ManagerGuard } from './gared/manager.guard';
+import { CreateSupervisorComponent } from './pages/supervisors/create-supervisor/create-supervisor.component';
 import { MangerOrderComponent } from './pages/manger-order/manger-order.component';
 
 const routes: Routes = [
@@ -79,8 +82,17 @@ const routes: Routes = [
     component: ProofsComponent,
     canActivate: [AuthGuard, SupervisorGuard],
   },
-  { path: 'manger', component: MangerOrderComponent },
-
+  {
+    path: 'users',
+    component: UsersComponent,
+    canActivate: [AuthGuard, ManagerGuard],
+  },
+  {
+    path: 'create-supervisor',
+    component: CreateSupervisorComponent,
+    canActivate: [AuthGuard, ManagerGuard],
+  },
+  { path: 'manger', component: MangerOrderComponent }
 ];
 
 @NgModule({

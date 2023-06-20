@@ -66,6 +66,7 @@ export class AuthService {
   setUserToLocalStorage(user: User) {
     this.currentUser$.next(user);
     localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('role', JSON.stringify(user.user.role));
   }
 
   currentUserProfile() {
@@ -74,6 +75,7 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('user');
+    localStorage.removeItem('role');
     this.currentUser$.next(undefined);
   }
 }

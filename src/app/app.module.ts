@@ -28,6 +28,9 @@ import { SupervisorHasRoleDirective } from './directives/supervisor-has-role.dir
 import { OrdersSupervisorComponent } from './pages/orders-supervisor/orders-supervisor.component';
 import { MyOrdersComponent } from './pages/my-orders/my-orders.component';
 import { ProofsComponent } from './pages/proofs/proofs.component';
+import { UsersComponent } from './pages/users/users.component';
+import { CreateSupervisorComponent } from './pages/supervisors/create-supervisor/create-supervisor.component';
+import { HasRoleDirective } from './directives/has-role.directive';
 import { MangerOrderComponent } from './pages/manger-order/manger-order.component';
 
 
@@ -51,6 +54,9 @@ import { MangerOrderComponent } from './pages/manger-order/manger-order.componen
     OrdersSupervisorComponent,
     MyOrdersComponent,
     ProofsComponent,
+    UsersComponent,
+    CreateSupervisorComponent,
+    HasRoleDirective,
     MangerOrderComponent
   ],
   imports: [
