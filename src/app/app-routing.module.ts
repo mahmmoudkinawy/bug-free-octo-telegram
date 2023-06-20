@@ -10,6 +10,8 @@ import { UpdatePasswordComponent } from './pages/update-password/update-password
 import { VerifyPasswordComponent } from './pages/verify-password/verify-password.component';
 import { MyProfileComponent } from './pages/my-profile/my-profile.component';
 import { ChangePasswordComponent } from './pages/change-password/change-password.component';
+import { DelegetsComponent } from './pages/delegets/delegets.component';
+
 import { AboutComponent } from './pages/about/about.component';
 import { SupervisorService } from './services/supervisor.service';
 import { SupervisorGuard } from './gared/supervisor.guard';
@@ -23,6 +25,8 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'orders', component: OrderComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'deleget', component: DelegetsComponent },
   {
     path: 'register',
     component: RegisterComponent,

@@ -55,14 +55,8 @@ export class OrderService {
     });
   }
 
-  makeReview(
-    orderId: string,
-    delegateId: string,
-    review: number
-  ): Observable<void> {
-    return this.http.post<void>(`${this.apiUrl}/make_review/${orderId}`, {
-      delegateId,
-      review,
-    });
+  makeReview(orderId: string, delegateId: string, review: number): Observable<any> {
+    const body = { delegateId, review };
+    return this.http.post(`${this.apiUrl}/make_review/${orderId}`, body);
   }
 }

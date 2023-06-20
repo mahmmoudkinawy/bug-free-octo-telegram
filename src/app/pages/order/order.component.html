@@ -31,20 +31,20 @@
 <div class="rate" *ngIf="rateForm">
   <form [formGroup]="rateForm" (ngSubmit)="getRate()" class="rate-form">
     <div class="form-group">
-      <label>Weight:</label>
-      <input type="number" formControlName="Dcountry" class="form-control" />
+      <label>Dcountry:</label>
+      <input type="text" formControlName="Dcountry" class="form-control" />
     </div>
     <div class="form-group">
-      <label>Dimension:</label>
+      <label>Rcountry:</label>
       <input type="text" formControlName="Rcountry" class="form-control" />
     </div>
     <div class="form-group">
-      <label>Category:</label>
-      <input type="text" formControlName="weight" class="form-control" />
+      <label>weight:</label>
+      <input type="number" formControlName="weight" class="form-control" />
     </div>
     <div class="form-group">
       <label>Npackge:</label>
-      <input type="text" formControlName="Npackge" class="form-control" />
+      <input type="number" formControlName="Npackge" class="form-control" />
     </div>
 
     <div *ngIf="errorMessage" class="error-message">
@@ -54,10 +54,10 @@
     <button type="submit" class="btn btn-primary">Get Rate</button>
   </form>
 </div>
-  <!-- <div *ngIf="rateData" class="rate-result">
+  <div *ngIf="rateData" class="rate-result">
     <h3>Rate Result:</h3>
-    <pre>{{ rateData.form }}</pre>
-  </div> -->
+    <pre class="rate-result">{{ rateData|json }}</pre>
+  </div>
 
 
   <div class="all" *ngIf="orderForm">
@@ -171,4 +171,22 @@
       <button type="submit" class="btn btn-primary">Submit Order</button>
     </form>
   </div>
+
+  <div class="container">
+    <h2 class="text-center">Make a Review</h2>
+    <div class="form-group">
+      <label for="orderId">Order ID:</label>
+      <input type="text" id="orderId" class="form-control" [(ngModel)]="orderId">
+    </div>
+    <div class="form-group">
+      <label for="delegateId">Delegate ID:</label>
+      <input type="text" id="delegateId" class="form-control" [(ngModel)]="delegateId">
+    </div>
+    <div class="form-group">
+      <label for="review">Review (1-5):</label>
+      <input type="number" id="review" class="form-control" [(ngModel)]="review" min="1" max="5">
+    </div>
+    <button class="btn btn-primary" (click)="makeReview()">Submit Review</button>
+  </div>
+
 </div>

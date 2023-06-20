@@ -1,0 +1,13 @@
+.custom-table {
+  width: 90%;
+}
+
+.custom-table th,
+.custom-table td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.container{
+  padding: 30px;
+}
