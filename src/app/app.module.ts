@@ -20,6 +20,7 @@ import { VerifyPasswordComponent } from './pages/verify-password/verify-password
 import { MyProfileComponent } from './pages/my-profile/my-profile.component';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { ChangePasswordComponent } from './pages/change-password/change-password.component';
+import { DelegetsComponent } from './pages/delegets/delegets.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { ChangePasswordComponent } from './pages/change-password/change-password
     VerifyPasswordComponent,
     MyProfileComponent,
     ChangePasswordComponent,
+    DelegetsComponent,
   ],
   imports: [
     BrowserModule,
