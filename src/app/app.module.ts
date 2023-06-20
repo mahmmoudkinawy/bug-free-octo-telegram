@@ -22,6 +22,8 @@ import { ChangePasswordComponent } from './pages/change-password/change-password
 import { AboutComponent } from './pages/about/about.component';
 import { SupervisorHomeComponent } from './pages/supervisors/supervisor-home/supervisor-home.component';
 import { SupervisorHasRoleDirective } from './directives/supervisor-has-role.directive';
+import { OrdersSupervisorComponent } from './pages/orders-supervisor/orders-supervisor.component';
+import { MyOrdersComponent } from './pages/my-orders/my-orders.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { SupervisorHasRoleDirective } from './directives/supervisor-has-role.dir
     AboutComponent,
     SupervisorHomeComponent,
     SupervisorHasRoleDirective,
+    OrdersSupervisorComponent,
+    MyOrdersComponent,
   ],
   imports: [
     BrowserModule,

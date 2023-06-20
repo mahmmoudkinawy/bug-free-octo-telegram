@@ -4,6 +4,7 @@ import { AddDelegate } from '../models/add-delegate';
 import { DelegateResponse } from '../models/delegate-response';
 import { Delegate, Delegates } from '../models/delegate';
 import { map } from 'rxjs';
+import { OrderResult } from '../models/order-response';
 
 @Injectable({
   providedIn: 'root',
@@ -15,6 +16,18 @@ export class SupervisorService {
 
   deleteDelegate(delegate: Delegate) {
     return this.http.delete(`${this.apiUrl}/remove_delegate/${delegate._id}`);
+  }
+
+  currentUserOrders() {
+    return this.http
+      .get<OrderResult>(`${this.apiUrl}/orders`)
+      .pipe(map((res) => res.orders));
+  }
+
+  loadAllOrders() {
+    return this.http
+      .get<OrderResult>(`${this.apiUrl}/all_orders`)
+      .pipe(map((res) => res.orders));
   }
 
   loadDelegates() {

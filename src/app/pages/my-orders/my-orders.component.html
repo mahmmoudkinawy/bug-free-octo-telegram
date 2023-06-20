@@ -1,0 +1,60 @@
+<div class="table-wrapper" *ngIf="orders.length">
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Tracking ID</th>
+                <th>Sender</th>
+                <th>Receiver</th>
+                <th>Category</th>
+                <th>Weight</th>
+                <th>Dimensions</th>
+                <th>Services</th>
+                <th>Delivery Time</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let order of orders">
+                <td>{{ order.trackId }}</td>
+                <td>
+                    <div>
+                        <strong>Name:</strong> {{ order.senderName }}
+                    </div>
+                    <div>
+                        <strong>Email:</strong> {{ order.senderEmail }}
+                    </div>
+                    <div>
+                        <strong>Phone:</strong> {{ order.senderPhone }}
+                    </div>
+                    <div>
+                        <strong>Address:</strong> {{ order.senderAddress }}
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <strong>Name:</strong> {{ order.receivedName }}
+                    </div>
+                    <div>
+                        <strong>Email:</strong> {{ order.receivedEmail }}
+                    </div>
+                    <div>
+                        <strong>Phone:</strong> {{ order.receivedPhone }}
+                    </div>
+                    <div>
+                        <strong>Address:</strong> {{ order.receivedAddress }}
+                    </div>
+                </td>
+                <td>{{ order.category }}</td>
+                <td>{{ order.weight }}</td>
+                <td>{{ order.dimension }}</td>
+                <td>{{ order.services }}</td>
+                <td>{{ order.deliverTime }}</td>
+                <td>{{ order.status }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="empty-orders" *ngIf="orders.length === 0">
+    <p>No orders available.</p>
+</div>

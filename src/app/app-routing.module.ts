@@ -15,6 +15,8 @@ import { SupervisorService } from './services/supervisor.service';
 import { SupervisorGuard } from './gared/supervisor.guard';
 import { HomeComponent } from './pages/home/home.component';
 import { SupervisorHomeComponent } from './pages/supervisors/supervisor-home/supervisor-home.component';
+import { OrdersSupervisorComponent } from './pages/orders-supervisor/orders-supervisor.component';
+import { MyOrdersComponent } from './pages/my-orders/my-orders.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -47,12 +49,22 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'my-orders',
+    component: MyOrdersComponent,
+    canActivate: [AuthGuard],
+  },
+  {
     path: 'about',
     component: AboutComponent,
   },
   {
     path: 'supervisors',
     component: SupervisorHomeComponent,
+    canActivate: [AuthGuard, SupervisorGuard],
+  },
+  {
+    path: 'orders-for-supervisors',
+    component: OrdersSupervisorComponent,
     canActivate: [AuthGuard, SupervisorGuard],
   },
 ];
