@@ -28,6 +28,7 @@ import { PageNtFoundComponent } from './components/page-nt-found/page-nt-found.c
 import { GetRateComponent } from './pages/order/get-rate/get-rate.component';
 import { ReviewComponent } from './pages/order/review/review.component';
 import { TackerComponent } from './pages/order/tacker/tacker.component';
+import { LocationComponent } from './pages/manger-order/location/location/location.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -100,6 +101,7 @@ const routes: Routes = [
     canActivate: [AuthGuard, ManagerGuard],
   },
   { path: 'manger', component: MangerOrderComponent },
+  { path: 'location', component: LocationComponent },
   { path: 'not-found', component: PageNtFoundComponent },
   { path: '**', redirectTo: 'not-found' },
 ];

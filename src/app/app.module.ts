@@ -36,8 +36,8 @@ import { PageNtFoundComponent } from './components/page-nt-found/page-nt-found.c
 import { GetRateComponent } from './pages/order/get-rate/get-rate.component';
 import { ReviewComponent } from './pages/order/review/review.component';
 import { TackerComponent } from './pages/order/tacker/tacker.component';
-
-
+import { LocationComponent } from './pages/manger-order/location/location/location.component';
+// import { GoogleMapsModule } from '@angular/google-maps';
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,7 +65,8 @@ import { TackerComponent } from './pages/order/tacker/tacker.component';
     PageNtFoundComponent,
     GetRateComponent,
     ReviewComponent,
-    TackerComponent
+    TackerComponent,
+    LocationComponent
   ],
   imports: [
     BrowserModule,
@@ -75,6 +76,7 @@ import { TackerComponent } from './pages/order/tacker/tacker.component';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+
     ToastrModule.forRoot({
       closeButton: true,
       positionClass: 'toast-bottom-right',
