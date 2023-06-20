@@ -1,0 +1,10 @@
+.table-wrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.table {
+  flex-grow: 1;
+  overflow: auto;
+}
