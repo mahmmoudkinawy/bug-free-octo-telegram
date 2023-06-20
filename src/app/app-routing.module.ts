@@ -20,6 +20,8 @@ import { SupervisorHomeComponent } from './pages/supervisors/supervisor-home/sup
 import { OrdersSupervisorComponent } from './pages/orders-supervisor/orders-supervisor.component';
 import { MyOrdersComponent } from './pages/my-orders/my-orders.component';
 import { ProofsComponent } from './pages/proofs/proofs.component';
+import { UsersComponent } from './pages/users/users.component';
+import { ManagerGuard } from './gared/manager.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -76,6 +78,11 @@ const routes: Routes = [
     path: 'proofs',
     component: ProofsComponent,
     canActivate: [AuthGuard, SupervisorGuard],
+  },
+  {
+    path: 'users',
+    component: UsersComponent,
+    canActivate: [AuthGuard, ManagerGuard],
   },
 ];
 

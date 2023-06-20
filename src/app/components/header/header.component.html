@@ -30,6 +30,9 @@
                     <a class="nav-link" routerLink="/proofs">Proofs</a>
                 </li>
             </ng-container>
+            <li class="nav-item" *ngIf="(authService.currentUser$ | async) && user">
+                <a class="nav-link" routerLink="/users">Users</a>
+            </li>
         </ul>
 
         <ul class="navbar-nav">
